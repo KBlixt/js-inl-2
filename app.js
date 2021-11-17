@@ -8,11 +8,7 @@ let blue = false;
 
 function taskOne() {
   const taskOneDiv = document.getElementById("answer-one")
-  if (!blue){
-    taskOneDiv.style.background = 'blue'
-  }else{
-    taskOneDiv.style.background = 'white'
-  }
+  taskOneDiv.style.background = blue? 'white': 'blue'
   blue = !blue
 }
 
@@ -59,9 +55,9 @@ eller båda värdena inte är ett nummer ska en alertbox med meddelandet "Jag ka
 
 function multiplier(valueOne, valueTwo) {
   if (typeof valueOne == "number" && typeof valueTwo == "number"){
-    alert("Produkten är: " + valueOne * valueTwo)
+    alert("Produkten är: " + (valueOne * valueTwo))
   }else{
-    alert("Jag kan bara multiplicera nummer.");
+    alert("Jag kan bara multiplicera tal.");
   }
 }
 
@@ -133,13 +129,8 @@ const underThirty = [];
 
 function taskSix() {
   for (let person of persons){
-    person.age < 30 ?
-        underThirty.push(person.name):
-        overThirty.push(person.name)
-
-    person.married ?
-        married.push(person.name):
-        notMarried.push(person.name)
+    person.age < 30 ? underThirty.push(person.name): overThirty.push(person.name)
+    person.married ? married.push(person.name): notMarried.push(person.name)
   }
 
   const over30text = 'Över 30:'.bold() + ' ' + overThirty.toString().replaceAll(',', ', ')
@@ -163,10 +154,10 @@ const addMeSomeLineBreaks =
 
 
 function taskSeven() {
-  const content = addMeSomeLineBreaks.split(", ")
+  const lines = addMeSomeLineBreaks.split(", ")
 
   const taskSevenDiv = document.getElementById("answer-seven")
-  for (let line of content){
+  for (let line of lines){
     taskSevenDiv.innerHTML += line + '</br>'
   }
 }
@@ -197,8 +188,9 @@ function taskNine() {
 
   const targetElements = []
   for (let answerContainer of answerContainers){
-    if (answerContainer.tagName === "div"){}
+    if (answerContainer.tagName === "DIV"){
       targetElements.push(answerContainer)
+    }
   }
 
   const newColour = new Date().getHours() < 17? "red": "blue"
